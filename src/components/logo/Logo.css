@@ -1,0 +1,31 @@
+.logo {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+.logo-part-1 {
+    color: blue;
+}
+
+.logo-part-2 {
+    color: red;
+}
+
+.logo-part-3 {
+    color: yellow;
+}
+
+.logo-part-4 {
+    color: blue;
+}
+
+.logo-part-5 {
+    color: green;
+}
+
+.logo-part-6 {
+    color: red;
+}

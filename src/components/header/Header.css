@@ -1,0 +1,56 @@
+.header-content {
+    width: 99vw;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding: 4px 1vw;
+}
+
+.header-left-menu {
+    width: 16%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: start;
+    align-items: center;
+    gap: 4%;
+    padding-left: 1%;
+}
+
+.header-center {
+    width: 66%;
+}
+
+.header-right-menu {
+    width: 18%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-right-1-menu, .header-right-2-menu {
+    width: 50%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 4%;
+}
+
+.header-right-1-menu {
+    justify-content: start;
+}
+
+.header-right-2-menu {
+    justify-content: end;
+}
+
+.header-heading {
+    font-size: 22px;
+    line-height: 24px;
+    color: #5f6368;
+    opacity: 1;
+}
+
+.header-center-text-field {
+    width: 47vw;
+}

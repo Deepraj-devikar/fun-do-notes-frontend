@@ -1,0 +1,85 @@
+.sign-up-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 48px;
+}
+
+.sign-up-image-box {
+    text-align: center;
+    padding-left: 24px;
+}
+
+.sign-up-image-box-text {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.sign-up-form-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 36px;
+}
+
+.sign-up-branding {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 8px;
+}
+
+.sign-up-page-heading {
+    color: #202124;;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.3333;
+}
+
+.sign-up-page-sub-heading {
+    color: #202124;;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.1px;
+}
+
+.sign-up-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.sign-up-input-field {
+    width: auto;
+}
+
+.sign-up-person-name, .sign-up-password-inputs {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.sign-up-input-hint {
+    color: #5f6368;
+    font-size: small;
+    margin-left: 10px;
+}
+
+.sign-up-show-password {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    gap: 16px;
+}
+
+.sign-up-show-password-text {
+    font-size: 14px;
+    color: #202124;
+}
+
+.sign-up-buttons {
+    width: 100%;
+}

@@ -1,0 +1,7 @@
+.outer-layout-top-component {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    padding-top: 10px;
+}

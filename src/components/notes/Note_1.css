@@ -1,0 +1,25 @@
+.note-1 {
+    width: 48%;
+}
+
+.note-1-content {
+    height: 48px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note-1-text {
+    padding-left: 16px;
+}
+
+.note-1-btns {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: baseline;
+}
+
+.note-1-on-btn, .note-1-off-btn, .note-1-close-btn {
+    width: 33%;
+}

@@ -1,0 +1,15 @@
+.outer-layout {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-box {
+    display: inline-block;
+    border: solid 1px #dadce0;
+    border-radius: 8px;
+    padding: 36px 40px 48px;
+}

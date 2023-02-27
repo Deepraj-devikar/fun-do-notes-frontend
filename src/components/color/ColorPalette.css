@@ -1,0 +1,6 @@
+.color-palette-color-list {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 10px;
+    padding: 8px;
+}

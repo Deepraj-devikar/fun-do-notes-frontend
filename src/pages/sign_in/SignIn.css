@@ -1,0 +1,55 @@
+.sign-in-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 36px;
+}
+
+.sign-in-branding {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.sign-in-page-heading {
+    color: #202124;;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.3333;
+}
+
+.sign-in-page-sub-heading {
+    color: #202124;;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.1px;
+}
+
+.sign-in-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.sign-in-input-field {
+    width: auto;
+}
+
+.sign-in-note {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.sign-in-note-text {
+    color: #5f6368;
+    font-size: 14px;
+    line-height: 1.4286;
+}
+
+.sign-in-buttons {
+    width: 100%;
+}

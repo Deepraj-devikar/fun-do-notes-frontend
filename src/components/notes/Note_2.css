@@ -1,0 +1,41 @@
+.note-2 {
+    width: 48%;
+}
+
+.note-2-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.note-2-title {
+    display: flex;
+    flex-flow: row nowrap;
+    position: relative;
+}
+
+.note-2-title-text-field {
+    width: 100%;
+    position: absolute;
+}
+
+.note-2-title-btns {
+    margin-left: 92%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: baseline;
+}
+
+.note-2-btns {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.note-2-icon-btns {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.note-2-title-text-field, .note-2-description-text-field {
+    padding-left: 16px;
+}
