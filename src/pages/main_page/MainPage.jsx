@@ -4,7 +4,7 @@ import Note_2 from "../../components/notes/Note_2";
 import Note_3 from '../../components/notes/Note_3';
 import Header from '../../components/header/Header';
 import { useState, useEffect } from 'react';
-import { ArchiveNoteApi, CreateNoteApi, GetAllNotesApi, ColorNoteApi } from '../../services/NoteService';
+import { ArchiveNoteApi, CreateNoteApi, GetAllNotesApi, ColorNoteApi, UpdateNoteApi } from '../../services/NoteService';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
@@ -51,11 +51,26 @@ export default function MainPage(){
         }
     }
 
+    const note3CloseOnClick = (noteID, data) => {
+        UpdateNoteApi(noteID, data)
+        .then(response => {
+            if(response.status == 202){
+                console.log("Note updated successfully", response);
+                setState(prevState => ({
+                    ...prevState,
+                    updateNotes: prevState.updateNotes + 1
+                }));
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
+
     const note3Archive = (noteID) => {
         ArchiveNoteApi(noteID)
         .then(response => {
             if(response.status == 202){
-                // alert("Note archive successfully");
                 console.log("Note archive successfully", response);
             }
         })
@@ -119,6 +134,7 @@ export default function MainPage(){
                                 note={note}
                                 note3Archive={note3Archive} 
                                 noteColor={noteColor}
+                                note3CloseOnClick={note3CloseOnClick}
                             />
                         ))}
                     </div>

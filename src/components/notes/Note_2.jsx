@@ -17,9 +17,9 @@ import ColoredPaper from '../color/ColoredPaper';
 
 export default function Note_2(props) {
     const [state, setState] = useState({
-        title: '',
-        description: '',
-        color: '#ffffff',
+        title: props.title ? props.title : '',
+        description: props.description ? props.description : '',
+        color: props.color ? props.color : '#ffffff',
         anchorElColorPalette: null
     });
 
@@ -47,6 +47,7 @@ export default function Note_2(props) {
                     <div className='note-2-title'>
                         <div className='note-2-title-text-field'>
                             <InputBase fullWidth={true} size="medium" 
+                                value={state.title}
                                 name="title" 
                                 placeholder="Title"
                                 onChange={e => {
@@ -64,7 +65,8 @@ export default function Note_2(props) {
                     </div>
                     <div className='note-2-description'>
                         <div className='note-2-description-text-field'>
-                            <InputBase fullWidth={true} size="medium" 
+                            <InputBase fullWidth={true} size="medium"
+                                value={state.description} 
                                 name="description" 
                                 placeholder="Description"
                                 onChange={e => {

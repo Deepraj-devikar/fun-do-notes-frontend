@@ -14,6 +14,10 @@ export const CreateNoteApi = (data) => {
     return instance.post(``, data);
 };
 
+export const UpdateNoteApi = (noteID, data) => {
+    return instance.put(`${noteID}`, data);
+}
+
 export const ArchiveNoteApi = (noteID) => {
     return instance.put(`${noteID}/archive`);
 };
