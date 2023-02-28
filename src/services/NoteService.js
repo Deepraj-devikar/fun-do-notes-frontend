@@ -22,6 +22,10 @@ export const ArchiveNoteApi = (noteID) => {
     return instance.put(`${noteID}/archive`);
 };
 
+export const TrashNoteApi = (noteID) => {
+    return instance.put(`${noteID}/trash`);
+};
+
 export const ColorNoteApi = (noteID, color) => {
     return instance.put(`${noteID}/color`, {color: color});
 };

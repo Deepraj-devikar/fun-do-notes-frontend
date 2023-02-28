@@ -1,0 +1,7 @@
+.main-page-side-menu-button {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    gap: 50%;
+    margin-left: -50%;
+}

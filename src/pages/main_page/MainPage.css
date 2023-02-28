@@ -43,11 +43,3 @@
     gap: 1%;
     row-gap: 12px;
 }
-
-.main-page-side-menu-button {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    gap: 50%;
-    margin-left: -50%;
-}

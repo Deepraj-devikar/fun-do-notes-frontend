@@ -21,7 +21,9 @@ export default function Header() {
         <div className='header'>
             <div className='header-content'>
                 <div className='header-left-menu'>
-                    <MenuIcon />
+                    <IconButton>
+                        <MenuIcon />
+                    </IconButton>                
                     <img src='./keep_note.png'/>
                     <div className='header-heading'>
                         Keep

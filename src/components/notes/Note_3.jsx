@@ -4,7 +4,7 @@ import PushPinIcon from '@mui/icons-material/PushPin';
 import AddAlertIcon from '@mui/icons-material/AddAlert';
 import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import ColorLensIcon from '@mui/icons-material/ColorLens';
-import ImageIcon from '@mui/icons-material/Image';
+import DeleteIcon from '@mui/icons-material/Delete';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import UndoIcon from '@mui/icons-material/Undo';
@@ -97,8 +97,8 @@ export default function Note_3(props) {
                             </Popper>
                         </div>
                         <div>
-                            <IconButton >
-                                <ImageIcon />
+                            <IconButton onClick={() => props.note3Trash(props.note._id)}>
+                                <DeleteIcon />
                             </IconButton>
                         </div>
                         <div>
