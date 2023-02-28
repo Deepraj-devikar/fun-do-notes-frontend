@@ -16,6 +16,12 @@ import ColoredPaper from '../color/ColoredPaper';
 import Modal from '@mui/material/Modal';
 import Note_2 from './Note_2';
 
+const styleModal = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+};
+
 export default function Note_3(props) {
     const [state, setState] = useState({anchorElColorPalette: null});
 
@@ -118,7 +124,7 @@ export default function Note_3(props) {
                     </div>
                 </div>
             </ColoredPaper>
-            <Modal
+            <Modal sx={styleModal}
                 open={state.open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
