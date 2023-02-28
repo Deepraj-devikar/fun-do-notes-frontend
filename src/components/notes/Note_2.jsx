@@ -91,7 +91,7 @@ export default function Note_2(props) {
                                 <IconButton onClick={colorPaletteOnClick}>
                                     <ColorLensIcon />
                                 </IconButton>
-                                <Popper id={id} open={open} anchorEl={state.anchorElColorPalette} >
+                                <Popper className='my-popper' id={id} open={open} anchorEl={state.anchorElColorPalette} >
                                     <ColorPalette chooseColor={chooseColor} />
                                 </Popper>
                             </div>

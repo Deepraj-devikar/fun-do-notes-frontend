@@ -39,3 +39,7 @@
 .note-2-title-text-field, .note-2-description-text-field {
     padding-left: 16px;
 }
+
+.my-popper {
+    z-index: 1500;
+}
