@@ -18,6 +18,12 @@
     width: 20%;
 }
 
+.main-page-side-menu-drawer-close {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 4%;
+}
+
 .main-page-main-content {
     width: 80%;
     display: flex;

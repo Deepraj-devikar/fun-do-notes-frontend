@@ -16,12 +16,12 @@ const GrayInputBase = styled(InputBase)({
     borderRadius: '8px'
 });
 
-export default function Header() {
+export default function Header(props) {
     return (
         <div className='header'>
             <div className='header-content'>
                 <div className='header-left-menu'>
-                    <IconButton>
+                    <IconButton onClick={() => props.drawerToggle()}>
                         <MenuIcon />
                     </IconButton>                
                     <img src='./keep_note.png'/>

@@ -15,7 +15,8 @@ export default function MainPage(){
         showNote1: true,
         notes: [],
         updateNotes: 1,
-        activeMenu: 'Notes'
+        activeMenu: 'Notes',
+        drawerOpen: true
     });
 
     const note1OnClick = () => {
@@ -132,22 +133,35 @@ export default function MainPage(){
         }));
     }
 
+    const drawerToggle = () => {
+        setState(prevState => ({
+            ...prevState,
+            drawerOpen: !prevState.drawerOpen
+        }));
+    }
+
     return (
         <div className='main-page-screen'>
-            <Header />
+            <Header drawerToggle={drawerToggle}/>
             <div className='main-page-work-area'>
-                    <div className='main-page-side-menu'>
-                        <SideMenuButton active={state.activeMenu == 'Notes'} menuName='Notes' onMenuClick={onMenuClick}>
+                    <div className={state.drawerOpen ? 'main-page-side-menu' : 'main-page-side-menu-drawer-close'}>
+                        <SideMenuButton onMenuClick={onMenuClick} drawerOpen={state.drawerOpen}
+                            active={state.activeMenu == 'Notes'} 
+                            menuName='Notes' 
+                        >
                             <LightbulbOutlinedIcon />
-                            Notes
                         </SideMenuButton>
-                        <SideMenuButton active={state.activeMenu == 'Archive'} menuName='Archive' onMenuClick={onMenuClick}>
+                        <SideMenuButton onMenuClick={onMenuClick} drawerOpen={state.drawerOpen} 
+                            active={state.activeMenu == 'Archive'} 
+                            menuName='Archive' 
+                        >
                             <ArchiveOutlinedIcon />
-                            Archive
                         </SideMenuButton>
-                        <SideMenuButton active={state.activeMenu == 'Trash'} menuName='Trash' onMenuClick={onMenuClick}>
+                        <SideMenuButton onMenuClick={onMenuClick} drawerOpen={state.drawerOpen} 
+                            active={state.activeMenu == 'Trash'} 
+                            menuName='Trash' 
+                        >
                             <DeleteOutlineOutlinedIcon />
-                            Trash
                         </SideMenuButton>
                     </div>
                 <div className='main-page-main-content'>
