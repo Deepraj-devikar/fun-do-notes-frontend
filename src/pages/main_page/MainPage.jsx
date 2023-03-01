@@ -4,7 +4,7 @@ import Note_2 from "../../components/notes/Note_2";
 import Note_3 from '../../components/notes/Note_3';
 import Header from '../../components/header/Header';
 import { useState, useEffect } from 'react';
-import { ArchiveNoteApi, CreateNoteApi, GetAllNotesApi, ColorNoteApi, UpdateNoteApi, TrashNoteApi } from '../../services/NoteService';
+import { ArchiveNoteApi, CreateNoteApi, GetAllNotesApi, ColorNoteApi, UpdateNoteApi, TrashNoteApi, DeleteNoteApi } from '../../services/NoteService';
 import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
 import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
@@ -46,15 +46,19 @@ export default function MainPage(){
         }
     }
 
+    const refreshNotes = () => {
+        setState(prevState => ({
+            ...prevState,
+            updateNotes: prevState.updateNotes + 1
+        }));
+    }
+
     const note3CloseOnClick = (noteID, data) => {
         UpdateNoteApi(noteID, data)
         .then(response => {
             if(response.status == 202){
                 console.log("Note updated successfully", response);
-                setState(prevState => ({
-                    ...prevState,
-                    updateNotes: prevState.updateNotes + 1
-                }));
+                refreshNotes();
             }
         })
         .catch(error => {
@@ -67,10 +71,7 @@ export default function MainPage(){
         .then(response => {
             if(response.status == 202){
                 console.log("Note archive successfully", response);
-                setState(prevState => ({
-                    ...prevState,
-                    updateNotes: prevState.updateNotes + 1
-                }));
+                refreshNotes();
             }
         })
         .catch(error => {
@@ -83,10 +84,7 @@ export default function MainPage(){
         .then(response => {
             if(response.status == 202){
                 console.log("Note trash successfully", response);
-                setState(prevState => ({
-                    ...prevState,
-                    updateNotes: prevState.updateNotes + 1
-                }));
+                refreshNotes();
             }
         })
         .catch(error => {
@@ -94,15 +92,25 @@ export default function MainPage(){
         });
     }
 
+    const note3Delete = (noteID) => {
+        DeleteNoteApi(noteID)
+        .then(response => {
+            if(response.status == 202){
+                console.log("Note deleted successfully", response);
+                refreshNotes();
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
+
     const noteColor = (noteID, color) => {
         ColorNoteApi(noteID, color)
         .then(response => {
             console.log(response);
             if(response.status == 202){
-                setState(prevState => ({
-                    ...prevState,
-                    updateNotes: prevState.updateNotes + 1
-                }));
+                refreshNotes();
             }
         })
         .catch(error => {
@@ -144,37 +152,38 @@ export default function MainPage(){
         <div className='main-page-screen'>
             <Header drawerToggle={drawerToggle}/>
             <div className='main-page-work-area'>
-                    <div className={state.drawerOpen ? 'main-page-side-menu' : 'main-page-side-menu-drawer-close'}>
-                        <SideMenuButton onMenuClick={onMenuClick} drawerOpen={state.drawerOpen}
-                            active={state.activeMenu == 'Notes'} 
-                            menuName='Notes' 
-                        >
-                            <LightbulbOutlinedIcon />
-                        </SideMenuButton>
-                        <SideMenuButton onMenuClick={onMenuClick} drawerOpen={state.drawerOpen} 
-                            active={state.activeMenu == 'Archive'} 
-                            menuName='Archive' 
-                        >
-                            <ArchiveOutlinedIcon />
-                        </SideMenuButton>
-                        <SideMenuButton onMenuClick={onMenuClick} drawerOpen={state.drawerOpen} 
-                            active={state.activeMenu == 'Trash'} 
-                            menuName='Trash' 
-                        >
-                            <DeleteOutlineOutlinedIcon />
-                        </SideMenuButton>
-                    </div>
-                <div className='main-page-main-content'>
+                <div className={`main-page-side-menu ${state.drawerOpen ? 'main-page-side-menu-drawer-open' : 'main-page-side-menu-drawer-close'}`}>
+                    <SideMenuButton onMenuClick={onMenuClick} drawerOpen={state.drawerOpen}
+                        active={state.activeMenu == 'Notes'} 
+                        menuName='Notes' 
+                    >
+                        <LightbulbOutlinedIcon />
+                    </SideMenuButton>
+                    <SideMenuButton onMenuClick={onMenuClick} drawerOpen={state.drawerOpen} 
+                        active={state.activeMenu == 'Archive'} 
+                        menuName='Archive' 
+                    >
+                        <ArchiveOutlinedIcon />
+                    </SideMenuButton>
+                    <SideMenuButton onMenuClick={onMenuClick} drawerOpen={state.drawerOpen} 
+                        active={state.activeMenu == 'Trash'} 
+                        menuName='Trash' 
+                    >
+                        <DeleteOutlineOutlinedIcon />
+                    </SideMenuButton>
+                </div>
+                <div className={`main-page-main-content ${state.drawerOpen ? 'main-page-main-content-drawer-open' : 'main-page-main-content-drawer-close'}`}>
                     <div className='main-page-create-note'>
                         {state.showNote1 ? <Note_1 note1OnClick={note1OnClick}/> : <Note_2 note2CloseOnClick={note2CloseOnClick}/>}
                     </div>
                     <div className='main-page-created-notes'>
                         {
                             state.activeMenu == 'Notes' ? 
-                                state.notes.map(note => (
+                                state.notes.filter(note => !note.isArchive && !note.isTrash).map(note => (
                                     <Note_3 
                                         key={note._id} 
                                         note={note}
+                                        trashNote={false}
                                         note3Archive={note3Archive} 
                                         noteColor={noteColor}
                                         note3CloseOnClick={note3CloseOnClick}
@@ -182,10 +191,11 @@ export default function MainPage(){
                                     />
                                 )) 
                             : (state.activeMenu == 'Archive' ? 
-                                state.notes.filter(note => note.isArchive).map(note => (
+                                state.notes.filter(note => note.isArchive && !note.isTrash).map(note => (
                                     <Note_3 
                                         key={note._id} 
                                         note={note}
+                                        trashNote={false}
                                         note3Archive={note3Archive} 
                                         noteColor={noteColor}
                                         note3CloseOnClick={note3CloseOnClick}
@@ -197,10 +207,9 @@ export default function MainPage(){
                                     <Note_3 
                                         key={note._id} 
                                         note={note}
-                                        note3Archive={note3Archive} 
-                                        noteColor={noteColor}
-                                        note3CloseOnClick={note3CloseOnClick}
+                                        trashNote={true}
                                         note3Trash={note3Trash}
+                                        note3Delete={note3Delete}
                                     />
                                 )) : ''
                             ))

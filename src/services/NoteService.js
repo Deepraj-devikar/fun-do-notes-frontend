@@ -18,6 +18,10 @@ export const UpdateNoteApi = (noteID, data) => {
     return instance.put(`${noteID}`, data);
 }
 
+export const DeleteNoteApi = (noteID) => {
+    return instance.delete(`${noteID}`);
+}
+
 export const ArchiveNoteApi = (noteID) => {
     return instance.put(`${noteID}/archive`);
 };

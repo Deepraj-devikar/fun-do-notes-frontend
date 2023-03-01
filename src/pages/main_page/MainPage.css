@@ -9,28 +9,37 @@
 .main-page-work-area {
     display: flex;
     flex-flow: row nowrap;
+    gap: 1%;
     width: 100%;
 }
 
 .main-page-side-menu {
     display: flex;
     flex-flow: column nowrap;
-    width: 20%;
+}
+
+.main-page-side-menu-drawer-open {
+    width: 19.5%;
 }
 
 .main-page-side-menu-drawer-close {
-    display: flex;
-    flex-flow: column nowrap;
-    width: 4%;
+    width: 3.5%;
 }
 
 .main-page-main-content {
-    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
     gap: 20px;
+}
+
+.main-page-main-content-drawer-open {
+    width: 79.5%;
+}
+
+.main-page-main-content-drawer-close {
+    width: 95.5%;
 }
 
 .main-page-create-note {
