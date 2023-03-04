@@ -3,7 +3,7 @@
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    padding: 4px 1vw;
+    padding: 4px 0.5vw;
 }
 
 .header-left-menu {
